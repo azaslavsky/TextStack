@@ -1,9 +1,9 @@
 /*
- * TextStack: a simple undo history script for DOM text fields
- * Developed and maintanined by Alex Zaslavsky, alex.zaslavsky.1990@gmail.com
- * Licensed under an MIT-style license.
- * @module TextStack
- * @version 0.0.1
+ * #TextStack
+ * TextStack: A simple undo history script for DOM text fields
+ * Developed and maintanined by Alex Zaslavsky
+ * Licensed under the MIT license.
+ * @author Alex Zaslavsky
  */
 
 ;(function(factory) {
@@ -26,6 +26,7 @@
 	/**
 	 * Get the current timestamp
 	 * @function
+	 * @private
 	*/
 	var getTime = function(){
 		return new Date().getTime();
@@ -38,16 +39,17 @@
 	 * @param {HTMLElement} input A DOM text input element (textarea, input type="text", etc)
 	 * @param {Object} [opts] A list of options
 	 * @param {number} [opts.idleDelay=5000] Number of milleseconds for which user must be inactive before we save a snapshot
-	 * @param {number} [opts.keyHoldDelay=400] If the user presses and holds an action key, this is the millesecond delay between the first and second firing of that action
-	 * @param {number} [opts.keyHoldInterval=100] If the user presses and holds an action key, this is the millesecond delay between firings after the second firing
 	 * @param {boolean} [opts.omitWhitespace=false] When diffing between two snapshots, whitespace will be omitted before comparing
 	 * @param {number} [opts.maxInterval=30000] If no snapshot has occurred in this number of milleseconds, override the idleDelay and try to make one no matter what
 	 * @param {number} [opts.maxundoStackSize=100] Greatest number of snapshots that can be stored at a given time
-	 * @param {number[]} [opts.redoKeys=false] Array of keyCodes for keys that, when pressed together, fire a redo action (Default: Ctrl + Y)
-	 * @param {number[]} [opts.undoKeys=false] Array of keyCodes for keys that, when pressed together, fire an undo action (Default: Ctrl + Z)
-	 * @param {boolean} [opts.watchSelection=true] Whether or not the snapshots store and compare selection ranges
-	 * @class
+	 * @param {number[]} [opts.redoKeys] Array of keyCodes for keys that, when pressed together, fire a redo action (Default: Ctrl + Y)
+	 * @param {number[]} [opts.undoKeys] Array of keyCodes for keys that, when pressed together, fire an undo action (Default: Ctrl + Z)
+	 * @property {HTMLElement} el The element onto which this textStack is applied
+	 * @class TextStack
 	*/
+	//@todo {number} [opts.keyHoldDelay=400] If the user presses and holds an action key, this is the millesecond delay between the first and second firing of that action
+	//@todo {number} [opts.keyHoldInterval=100] If the user presses and holds an action key, this is the millesecond delay between firings after the second firing
+	//@todo {boolean} [opts.watchSelection=true] Whether or not the snapshots store and compare selection ranges
 	var TextStack = function(el, opts){
 		//Set options
 		this.opts = opts || {};
@@ -83,28 +85,25 @@
 
 
 
-	/**
-	 * The only two actions a user can undertake
-	 * @property
-	*/
+
+	
+	//A list of the only two actions a user can undertake
+	//@private
 	TextStack.prototype.actions = ['redo', 'undo'];
 
 
 
-	/**
-	 * Create the event listeners for useful keypresses
-	 * @method
-	*/
+	///Create the event listeners for useful keypresses
+	//@private
 	TextStack.prototype.on = function(){
 		this.el.addEventListener('keydown', this.down.bind(this));
 		this.el.addEventListener('keyup', this.up.bind(this));
 		this.el.addEventListener('mouseup', this.mouse.bind(this));
 	};
 
-
 	/**
 	 * Remove the event listeners, so that we can delete this bad body without any memory leaks
-	 * @method
+	 * @memberof TextStack
 	*/
 	TextStack.prototype.off = function(){
 		this.el.removeEventListener('keydown', this.down);
@@ -114,11 +113,9 @@
 
 
 
-	/**
-	 * A key has been depressed
-	 * param {Object} e Event that triggered this function
-	 * @method
-	*/
+	//A key has been depressed
+	//@param {Event} e Event that triggered this function
+	//@private
 	TextStack.prototype.down = function(e){
 		this.eventFired(e);
 
@@ -150,11 +147,9 @@
 
 
 
-	/**
-	 * A key has been released
-	 * param {Object} e Event that triggered this function
-	 * @method
-	*/
+	//A key has been released
+	//@param {Event} e Event that triggered this function
+	//@private
 	TextStack.prototype.up = function(e){
 		this.eventFired(e);
 
@@ -175,11 +170,9 @@
 
 
 
-	/**
-	 * The user has clicked on the element, but not necessarily changed it - compare selection ranges
-	 * param {Object} e Event that triggered this function
-	 * @method
-	*/
+	//The user has clicked on the element, but not necessarily changed it - compare selection ranges
+	//@param {Event} e Event that triggered this function
+	//@private
 	TextStack.prototype.mouse = function(e){
 		this.eventFired(e);
 
@@ -195,11 +188,9 @@
 
 
 
-	/**
-	 * Do some housekeeping any time a relevant event (keydown, keyup, change, or mouseup) is fired
-	 * param {Object} e Event that triggered this function
-	 * @method
-	*/
+	//Do some housekeeping any time a relevant event (keydown, keyup, change, or mouseup) is fired
+	//param {Event} e Event that triggered this function
+	//@private
 	TextStack.prototype.eventFired = function(e){
 		//Any user event after a right click must trigger a snapshot attempt, in order to 
 		if (this.contextMenuActive) {
@@ -218,11 +209,9 @@
 
 
 
-	/**
-	 * Has the user not made any changes in at time greater than the idleDelay?  Attempt a snapshot
-	 * param {number} timeStamp The time at which this idelCheck was registered; if the element value has not been altered since then, attempt to make a snapshot
-	 * @method
-	*/
+	//Has the user not made any changes in at time greater than the idleDelay?  Attempt a snapshot
+	//param {number} timeStamp The time at which this idelCheck was registered; if the element value has not been altered since then, attempt to make a snapshot
+	//@private
 	TextStack.prototype.idleCheck = function(timeStamp){
 		if (timeStamp >= this.lastAltered) {
 			this.snapshot();
@@ -232,11 +221,9 @@
 
 
 
-	/**
-	 * Has the user not made a snapshot in a length of time greater than maxInterval?  Attempt a snapshot if they have not
-	 * @ params {number} [snapIndex] A unique identifier that will be matched against the snapCounter to see if any new snapshots have been made in the interval
-	 * @method
-	*/
+	//Has the user not made a snapshot in a length of time greater than maxInterval?  Attempt a snapshot if they have not
+	//@ params {number} [snapIndex] A unique identifier that will be matched against the snapCounter to see if any new snapshots have been made in the interval
+	//@private
 	TextStack.prototype.intervalCheck = function(snapIndex){
 		if (typeof snapIndex === 'number' && snapIndex <= this.snapCounter) {
 			this.snapshot();
@@ -245,11 +232,10 @@
 
 
 
-	/**
-	 * Check to see if we are pressing the exact combination of keys to fire an action, no more or less
-	 * param {Object} e Event that triggered this function
-	 * @method
-	*/
+	//Check to see if we are pressing the exact combination of keys to fire an action, no more or less
+	//@param {Event} e Event that triggered this function
+	//@return {boolean} Whether or not the currently depressed keys match the triggger for a listed action
+	//@private
 	TextStack.prototype.compareKeys = function(e){
 		var isAction = false;
 		this.actions.forEach(function(a){
@@ -274,11 +260,12 @@
 
 	/**
 	 * Attempt a redo action
-	 * @method
+	 * @param {Event} [e] Event that triggered this function (optional)
+	 * @memberof TextStack
 	*/
 	TextStack.prototype.redo = function(e){
 		//Prevent the default event from occurring
-		e.preventDefault();
+		e && e.preventDefault();
 
 		//Check if we have a populated undoStack, and peel of the last value
 		if (this.redoStack.length) {
@@ -305,11 +292,12 @@
 
 	/**
 	 * Attempt an undo action
-	 * @method
+	 * @param {Event} [e] Event that triggered this function (optional)
+	 * @memberof TextStack
 	*/
 	TextStack.prototype.undo = function(e){
 		//Prevent the default event from occurring
-		e.preventDefault(e);
+		e && e.preventDefault(e);
 		
 		//Check if we have a populated undoStack, and peel of the last value
 		if (this.undoStack.length) {
@@ -340,7 +328,7 @@
 	 * Attempt to add a snapshot to the undo undoStack - returns false if the new snapshot matches the last available one
 	 * @param {boolean} [force=false] Forces the snapshot to be added to the stack, even if there is no difference between it and the previous snapshot
 	 * @return {boolean} Forces the snapshot to be added to the stack, even if there is no difference between it and the previous snapshot
-	 * @method
+	 * @memberof TextStack
 	*/
 	TextStack.prototype.snapshot = function(force){
 		//Grab the last snapshot, and the value of the text element
@@ -379,9 +367,11 @@
 
 	/**
 	 * Diff two strings, optionally omitting whitespace
-	 * @oaram {string} [a] The first string to compare
-	 * @oaram {string} [b] The second string, against which the first will be compared
-	 * @oaram {boolean} [omitWhitespace] Do the comparison with or without whitespace include (ex: if true, "a  b" === "a       b")
+	 * @param {string} [a] The first string to compare
+	 * @param {string} [b] The second string, against which the first will be compared
+	 * @param {boolean} [omitWhitespace] Do the comparison with or without whitespace included (ex: if true, "a  b" === "a       b")
+	 * @return {boolean} True means there is a difference, false means they are identical
+	 * @memberof TextStack
 	*/
 	TextStack.prototype.diff = function(a, b, omitWhitespace){
 		omitWhitespace = omitWhitespace || this.omitWhitespace || false;
@@ -397,7 +387,7 @@
 	/**
 	 * Reset the TextStack's histories, and optionally clear the text element
 	 * @param {boolean} [clear=false] Whether or not we should clear the text area as well - be careful with this!
-	 * @method
+	 * @memberof TextStack
 	*/
 	TextStack.prototype.reset = function(clear){
 		this.undoStack = [];

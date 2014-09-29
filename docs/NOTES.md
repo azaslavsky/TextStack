@@ -1,0 +1,45 @@
+# TextStack
+
+The undo functionality for various text input fields on many browsers is very buggy.  TextStack is a simple undo history script for DOM text fields.  It also comes with an easy to use API which allows developers to safely modify the undo stack at their own discretion.  This library lightweight and has no dependencies - no jQuery or nothing.  Currently, I've test its compatibility with the latest versions of Chrome and Firefox.
+
+This project has a few goals:
+
+* Keep it simple - do this one thing, and do it well
+* No feature creep
+* No dependencies
+* Small and lightweight
+
+## Overview
+
+TextStack is easy: just pass the DOM element you wish to apply TextStack to through to its constructor.  You'll need to save the variable somewhere - if you are using jQuery, it might be wise to save it on the variable itself.  An optional second parameter contains an object of options.
+
+```js
+//Make sure to load the TextStack js file before running this code!
+
+//Create a textarea
+var myTextArea = document.createElement('textarea');
+document.body.appendChild(myTextArea);
+
+//Add TextStack
+var myTextStack = new TextStack(myTextArea, {
+  idleDelay: 2000
+});
+
+//Insert some text into the textarea, then add a snapshot to the undo stack
+myTextArea.value = 'test';
+myTextStack.snapshot();
+```
+
+### Todo List
+
+Some stuff I'd like to add in the future
+
+* Expand browser support
+* Optional jQuery integration as a plugin; would only fire if jQuery is detected, and would continue to work standalone
+* Better handling of undo/redo operations where the keys are held down
+* Keep track of selection areas and where the cursor is in each snapshot, and maybe take snapshots for certain selection events
+* Unit tests
+
+### Known Bugs
+* If the user keeps typing continuously for much longer than the maxInterval, there won't be any new snapshots after the first maxInterval has expired
+* If, after an undo, the user pastes some text, the redoStack won't be cleared like it should be
