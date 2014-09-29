@@ -1,6 +1,6 @@
 # TextStack
 
-The undo functionality for various text input fields on many browsers is very buggy.  TextStack is a simple undo history script for DOM text fields.  It also comes with an easy to use API which allows developers to safely modify the undo stack at their own discretion.  This library lightweight and has no dependencies - no jQuery or nothing.  Currently, I've test its compatibility with the latest versions of Chrome and Firefox.
+The undo functionality for various text input fields on many browsers is very unpredictable.  TextStack is a simple undo history script for DOM text input fields.  It also comes with an easy to use API which allows developers to safely modify the undo stack at their own discretion.  This library lightweight and has no dependencies.  Currently, I've test its compatibility with the latest versions of Chrome and Firefox.
 
 This project has a few goals:
 
@@ -11,7 +11,7 @@ This project has a few goals:
 
 ## Overview
 
-TextStack is easy: just pass the DOM element you wish to apply TextStack to through to its constructor.  You'll need to save the variable somewhere - if you are using jQuery, it might be wise to save it on the variable itself.  An optional second parameter contains an object of options.
+TextStack is easy: just pass the DOM element you wish to use TextStack on as the first argument when initializing.  You'll need to save the variable somewhere - if you are using jQuery, it might be wise to save it on the jQuery element itself.  An optional second parameter contains an object of options.
 
 ```js
 //Make sure to load the TextStack js file before running this code!
