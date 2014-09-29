@@ -82,7 +82,7 @@ Attempt a redo action
 
 **Params**
 
-- \[e\] `Event` - Event that triggered this function  
+- \[e\] `Event` - Event that triggered this function (optional)  
 
 <a name="TextStack#undo"></a>
 ###textStack.undo([e])
@@ -90,7 +90,7 @@ Attempt an undo action
 
 **Params**
 
-- \[e\] `Event` - Event that triggered this function  
+- \[e\] `Event` - Event that triggered this function (optional)  
 
 <a name="TextStack#snapshot"></a>
 ###textStack.snapshot([force])

@@ -38,13 +38,12 @@
 	 * Create a new instance of TextStack
 	 * @param {HTMLElement} input A DOM text input element (textarea, input type="text", etc)
 	 * @param {Object} [opts] A list of options
-	 * @param {number} [opts.idleDelay=5000] Number of milleseconds for which user must be inactive before we save a snapshot
+	 * @param {number} [opts.idleDelay=1000] Number of milleseconds for which user must be inactive before we save a snapshot
 	 * @param {boolean} [opts.omitWhitespace=false] When diffing between two snapshots, whitespace will be omitted before comparing
-	 * @param {number} [opts.maxInterval=30000] If no snapshot has occurred in this number of milleseconds, override the idleDelay and try to make one no matter what
+	 * @param {number} [opts.maxInterval=5000] If no snapshot has occurred in this number of milleseconds, override the idleDelay and try to make one no matter what
 	 * @param {number} [opts.maxundoStackSize=100] Greatest number of snapshots that can be stored at a given time
 	 * @param {number[]} [opts.redoKeys] Array of keyCodes for keys that, when pressed together, fire a redo action (Default: Ctrl + Y)
 	 * @param {number[]} [opts.undoKeys] Array of keyCodes for keys that, when pressed together, fire an undo action (Default: Ctrl + Z)
-	 * @property {HTMLElement} el The element onto which this textStack is applied
 	 * @class TextStack
 	*/
 	//@todo {number} [opts.keyHoldDelay=400] If the user presses and holds an action key, this is the millesecond delay between the first and second firing of that action
