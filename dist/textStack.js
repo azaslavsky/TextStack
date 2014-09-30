@@ -321,9 +321,9 @@
 
 
 	/**
-	 * Attempt to add a snapshot to the undo undoStack - returns false if the new snapshot matches the last available one
+	 * Attempt to add a snapshot to the undoStack - returns false if the new snapshot matches the last available one
 	 * @param {boolean} [force=false] Forces the snapshot to be added to the stack, even if there is no difference between it and the previous snapshot
-	 * @return {boolean} Forces the snapshot to be added to the stack, even if there is no difference between it and the previous snapshot
+	 * @return {boolean} Whether or not the operation was successful
 	 * @memberof TextStack
 	*/
 	TextStack.prototype.snapshot = function(force){
@@ -365,7 +365,7 @@
 	 * Diff two strings, optionally omitting whitespace
 	 * @param {string} [a] The first string to compare
 	 * @param {string} [b] The second string, against which the first will be compared
-	 * @param {boolean} [omitWhitespace] Do the comparison with or without whitespace included (ex: if true, "a  b" === "a       b")
+	 * @param {boolean} [omitWhitespace] Do the comparison with or without whitespace included (ex: if true, "ab" === "a\n\n\nb")
 	 * @return {boolean} True means there is a difference, false means they are identical
 	 * @memberof TextStack
 	*/
@@ -382,7 +382,7 @@
 
 	/**
 	 * Reset the TextStack's histories, and optionally clear the text element
-	 * @param {boolean} [clear=false] Whether or not we should clear the text area as well - be careful with this!
+	 * @param {boolean} [clear=false] Whether or not we should clear the text element as well - be careful with this!
 	 * @memberof TextStack
 	*/
 	TextStack.prototype.reset = function(clear){

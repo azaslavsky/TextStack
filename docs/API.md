@@ -48,13 +48,13 @@ Attempt an undo action
 
 <a name="TextStack#snapshot"></a>
 ###textStack.snapshot([force])
-Attempt to add a snapshot to the undo undoStack - returns false if the new snapshot matches the last available one
+Attempt to add a snapshot to the undoStack - returns false if the new snapshot matches the last available one
 
 **Params**
 
 - \[force=false\] `boolean` - Forces the snapshot to be added to the stack, even if there is no difference between it and the previous snapshot  
 
-**Returns**: `boolean` - Forces the snapshot to be added to the stack, even if there is no difference between it and the previous snapshot  
+**Returns**: `boolean` - Whether or not the operation was successful  
 <a name="TextStack#diff"></a>
 ###textStack.diff([a], [b], [omitWhitespace])
 Diff two strings, optionally omitting whitespace
@@ -63,7 +63,7 @@ Diff two strings, optionally omitting whitespace
 
 - \[a\] `string` - The first string to compare  
 - \[b\] `string` - The second string, against which the first will be compared  
-- \[omitWhitespace\] `boolean` - Do the comparison with or without whitespace included (ex: if true, "a  b" === "a       b")  
+- \[omitWhitespace\] `boolean` - Do the comparison with or without whitespace included (ex: if true, "ab" === "a\n\n\nb")  
 
 **Returns**: `boolean` - True means there is a difference, false means they are identical  
 <a name="TextStack#reset"></a>
@@ -72,5 +72,5 @@ Reset the TextStack's histories, and optionally clear the text element
 
 **Params**
 
-- \[clear=false\] `boolean` - Whether or not we should clear the text area as well - be careful with this!  
+- \[clear=false\] `boolean` - Whether or not we should clear the text element as well - be careful with this!  
 
