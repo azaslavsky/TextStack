@@ -28,7 +28,7 @@ Create a new instance of TextStack
 
 <a name="TextStack#off"></a>
 ###textStack.off()
-Remove the event listeners, so that we can delete this bad body without any memory leaks
+Remove the event listeners, so that we can delete this bad boy without any memory leaks
 
 <a name="TextStack#redo"></a>
 ###textStack.redo([e])

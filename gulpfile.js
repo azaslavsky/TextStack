@@ -41,8 +41,14 @@ gulp.task('bump', ['docs'], function() {
 		.pipe(gulp.dest('./'));
 });
 
+//Copy the original file to the dist folder
+gulp.task('copy', ['bump'], function() {
+	gulp.src(['./src/textStack.js'])
+		.pipe(gulp.dest('./dist'))
+});
+
 //Build this sucker!
-gulp.task('build', ['bump'], function() {
+gulp.task('build', ['copy'], function() {
 	gulp.src(['./src/textStack.js'])
 		.pipe(uglify())
 		.pipe(rename(function(path){
