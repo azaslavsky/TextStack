@@ -92,9 +92,23 @@
 	///Create the event listeners for useful keypresses
 	//@private
 	TextStack.prototype.on = function(){
-		this.el.addEventListener('keydown', this.down.bind(this));
-		this.el.addEventListener('keyup', this.up.bind(this));
-		this.el.addEventListener('mouseup', this.mouse.bind(this));
+		//Make sure the bound functions are saved, so that we can remove the listeners cleanly without leaking memory
+		this.listeners = {
+			keydown: this.down.bind(this),
+			keyup: this.up.bind(this),
+			mouseup: this.mouse.bind(this),
+			bind: this.clear.bind(this),
+			focus: 'bind'
+		}
+
+		//Cycle through and bind each newly stored listener function
+		for (var k in this.listeners) {
+			if (typeof this.listeners[k] === 'function') {
+				this.el.addEventListener(k, this.listeners[k]);
+			} else if (typeof this.listeners[k] === 'string') {
+				this.el.addEventListener(k, this.listeners[this.listeners[k]]);
+			}
+		}
 	};
 
 	/**
@@ -102,9 +116,14 @@
 	 * @memberof TextStack
 	*/
 	TextStack.prototype.off = function(){
-		this.el.removeEventListener('keydown', this.down);
-		this.el.removeEventListener('keyup', this.up);
-		this.el.removeEventListener('mouseup', this.mouse);
+		//Cycle through the saved listeners and remove them
+		for (var k in this.listeners) {
+			if (typeof this.listeners[k] === 'function') {
+				this.el.removeEventListener(k, this.listeners[k]);
+			} else if (typeof this.listeners[k] === 'string') {
+				this.el.removeEventListener(k, this.listeners[this.listeners[k]]);
+			}
+		}
 	};
 
 
@@ -184,11 +203,21 @@
 
 
 
+	//Clear the "pressed" array tracking pressed keys
+	//@param {Event} e Event that triggered this function
+	//@private
+	TextStack.prototype.clear = function(e){
+		this.eventFired(e);
+		this.pressed = [];
+	};
+
+
+
 	//Do some housekeeping any time a relevant event (keydown, keyup, change, or mouseup) is fired
 	//param {Event} e Event that triggered this function
 	//@private
 	TextStack.prototype.eventFired = function(e){
-		//Any user event after a right click must trigger a snapshot attempt, in order to 
+		//Any user event after a right click must trigger a snapshot attempt
 		if (this.contextMenuActive) {
 			this.contextMenuActive = false;
 			this.lastAltered = getTime();
