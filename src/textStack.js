@@ -6,6 +6,7 @@
  */
 
 ;(function(factory) {
+	/* istanbul ignore next */
 	if (typeof define === 'function' && define.amd) { //AMD
 		define(factory);
 	} else if (typeof exports !== 'undefined') { //CommonJS/node.js
