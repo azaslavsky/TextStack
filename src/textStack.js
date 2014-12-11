@@ -15,7 +15,7 @@
 		}
 		exports = TextStack;
 	} else { //Browser global
-		window.purl = factory();
+		window.TextStack = factory();
 	}
 })(function() {
 	"use strict";
@@ -99,7 +99,7 @@
 			mouseup: this.mouse.bind(this),
 			bind: this.clear.bind(this),
 			focus: 'bind'
-		}
+		};
 
 		//Cycle through and bind each newly stored listener function
 		for (var k in this.listeners) {
@@ -124,6 +124,7 @@
 				this.el.removeEventListener(k, this.listeners[this.listeners[k]]);
 			}
 		}
+		this.listeners = null;
 	};
 
 
@@ -292,13 +293,11 @@
 		//Prevent the default event from occurring
 		e && e.preventDefault();
 
-		//Check if we have a populated undoStack, and peel of the last value
+		//Check if we have a populated undoStack, and peel off the last value
+		var snapshot;
 		if (this.redoStack.length) {
 			//Move the last snapshot from undoStack to redoStack
-			var snapshot = this.redoStack.pop();
-			if (!snapshot) {
-				return;
-			}
+			snapshot = this.redoStack.pop();
 			this.undoStack.push(snapshot);
 
 			//If the last snapshot in the redoStack matches the current state, redo twice!
@@ -324,9 +323,14 @@
 		//Prevent the default event from occurring
 		e && e.preventDefault(e);
 		
-		//Check if we have a populated undoStack, and peel of the last value
+		//Check if we have a populated undoStack, and peel off the last value
+		var snapshot;
 		if (this.undoStack.length) {
-			var snapshot = this.undoStack.pop();
+			//Try and push a new undo snapshot, to make sure the correct snapshot gets pushed to the redoStack
+			this.snapshot();
+
+			//Remove the last available snapshot
+			snapshot = this.undoStack.pop();
 			if (!snapshot || !snapshot.val) {
 				this.el.value = '';
 				return;
