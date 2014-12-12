@@ -213,8 +213,8 @@
 					area = null;
 					stack = null;
 					
-					this.asyncStack.opts.idleDelay = 80; //Use much shorter intervals for programmatic testing
-					this.asyncStack.opts.maxInterval = 200;
+					this.asyncStack.opts.idleDelay = 160; //Use much shorter intervals for programmatic testing
+					this.asyncStack.opts.maxInterval = 400;
 				});
 
 				it('should fire a snapshot attempt after idling for a specified interval', function(done){
@@ -224,7 +224,7 @@
 					//Make sure idle is set to false immediately after typing
 					setTimeout(function(){
 						expect(this.asyncStack.idle).toBeFalse();
-					}.bind(this), 40);
+					}.bind(this), 80);
 
 					//Check after idleDelay has passed
 					setTimeout(function(){
@@ -232,7 +232,7 @@
 						expect(this.asyncStack.undoStack).toBeArray();
 						expect(this.asyncStack.undoStack[this.asyncStack.undoStack.length - 1].val).toBe('foobarquux');
 						done();
-					}.bind(this), 120);
+					}.bind(this), 240);
 				});
 
 				it('should fire a snapshot attempt after not idling for a specified interval', function(done){ //Need to resolve #010 to complete this one
@@ -245,7 +245,7 @@
 							if (num === 5) {
 								done();
 							}
-						}.bind(this), 60 * num);
+						}.bind(this), 120 * num);
 					}.bind(this);
 					this.asyncArea.value = 'abcd';
 
@@ -256,14 +256,14 @@
 					//Make sure idle is set to false immediately after typing
 					setTimeout(function(){
 						expect(this.asyncStack.idle).toBeFalse();
-					}.bind(this), 100);
+					}.bind(this), 200);
 
 					//Check after idleDelay has passed
 					setTimeout(function(){
 						expect(this.asyncStack.idle).toBeFalse();
 						expect(this.asyncStack.undoStack).toEqual(jasmine.any(Array));
 						expect(this.asyncStack.undoStack.length).toEqual(4);
-					}.bind(this), 250);
+					}.bind(this), 500);
 				});
 
 				afterEach(function(done){
