@@ -8,6 +8,8 @@ This project has a few goals:
 * No feature creep
 * No dependencies
 * Small and lightweight
+* Optional jQuery integration
+* Desktop browser compatibility: Chrome, Chrome Canary, Firefox ESR, Firefox Developer Edition, IE9+, Safari 6+
 
 ## Overview
 
@@ -32,14 +34,7 @@ myTextStack.snapshot();
 
 ### Todo List
 
-Some stuff I'd like to add in the future
-
 * Expand browser support
 * Optional jQuery integration as a plugin; would only fire if jQuery is detected, and would continue to work standalone
 * Better handling of undo/redo operations where the keys are held down
 * Keep track of selection areas and where the cursor is in each snapshot, and maybe take snapshots for certain selection events
-* Unit tests
-
-### Known Bugs
-* If the user keeps typing continuously for much longer than the maxInterval, there won't be any new snapshots after the first maxInterval has expired
-* If, after an undo, the user pastes some text, the redoStack won't be cleared like it should be
