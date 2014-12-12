@@ -41,15 +41,17 @@ module.exports = function(config) {
 
     // optionally, configure the reporter
     coverageReporter: {
-      type : 'html',
-      dir : 'test/coverage/',
+      dir: 'test/results/',
+      reporters: [ 
+        { type : 'lcovonly', subdir : '.'},
+        { type : 'html', subdir : '.'}
+      ]
     },
 
 
     // jasmein html reports
     htmlReporter: {
-      outputDir: 'test/browser/',
-      templatePath: 'node_modules/karma-html-reporter/jasmine_template.html'
+      outputFile: 'test/results/compatibility.html',
     },
 
 
@@ -72,8 +74,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
-    // browsers: ['Chrome', 'ChromeCanary', 'Firefox', 'FirefoxDeveloper', 'IE11', 'IE10', 'IE9'], // Compatibility tests
+    browsers: ['Chrome', 'ChromeCanary', 'Firefox', 'FirefoxDeveloper', 'IE11', 'IE10', 'IE9'], // Compatibility tests
 
     // browser latency settings
     browserDisconnectTimeout: 1000,

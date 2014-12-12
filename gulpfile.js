@@ -43,68 +43,29 @@ gulp.task('jasmine', function() {
 		.pipe(open('<%file.path%>'));
 });
 
-//Full Karma run-through
-gulp.task('karma', function(done) {
+//Test for browser compatibility
+gulp.task('browsers', function(done) {
 	var opts = {
 		configFile: __dirname+'/karma.conf.js',
-		singelRun: true
-	};
-
-	if (args.mode === 'compatibility' || args.mode === 'comp') {
-		args.browsers = 'comp';
-	} else if ((args.mode === 'coverage' || args.mode === 'cover') && !args.browsers) {
-		args.browsers = 'PhantomJS';
-		opts.reporters = ['mocha', 'coverage'];
-	}
-
-	//Set the browser to run the karma test in, or check for compatibility and do all the browsers'
-	if (args.browsers === 'compatibility' || args.browsers === 'comp' || args.browsers === 'all') {
-		opts.browsers = ['Chrome', 'ChromeCanary', 'Firefox', 'FirefoxDeveloper', 'IE11', 'IE10', 'IE9'];
-		opts.preprocessors = {};
-		opts.reporters = ['mocha', 'html'];
-	} else {
-		opts.browsers = args.browsers ? [args.browsers] : ['PhantomJS'];
-	}
-
-	return karma.start(opts, done);
-});
-
-//Full Karma run-through for compatibility
-gulp.task('karma-compatibility', function(done) {
-	var opts = {
-		configFile: __dirname+'/karma.conf.js',
-		singelRun: true,
+		singleRun: true,
 		browsers: ['PhantomJS', 'Chrome', 'ChromeCanary', 'Firefox', 'FirefoxDeveloper', 'IE11', 'IE10', 'IE9'],
 		reporters: ['mocha', 'html'],
 		preprocessors: {}
 	};
 
-	/*if (args.mode === 'compatibility' || args.mode === 'comp') {
-		args.browsers = 'comp';
-	} else if ((args.mode === 'coverage' || args.mode === 'cover') && !args.browsers) {
-		args.browsers = 'PhantomJS';
-		opts.reporters = ['mocha', 'coverage'];
-	}
-
-	//Set the browser to run the karma test in, or check for compatibility and do all the browsers'
-	if (args.browsers === 'compatibility' || args.browsers === 'comp' || args.browsers === 'all') {
-		opts.browsers = ['Chrome', 'ChromeCanary', 'Firefox', 'FirefoxDeveloper', 'IE11', 'IE10', 'IE9'];
-		opts.preprocessors = {};
-		opts.reporters = ['mocha', 'html'];
-	} else {
-		opts.browsers = args.browsers ? [args.browsers] : ['PhantomJS'];
-	}*/
-
 	return karma.start(opts, done);
 });
 
-//Test for browser compatibility
-gulp.task('compatibility', ['karma-compatibility'], function() {
-	return gulp.src(['./test/browser/'+ (typeof args.open === 'string' ? args.open+'*' : '*') +'/index.html'])
+//USED FOR OLD karma-html-reporter plugin; since switching to karma-html-file-reporter, this is no longer necessary
+/*gulp.task('compatibility', ['karma-compatibility'], function() {
+	console.log('./test/browser/'+ (typeof args.open === 'string' ? args.open+'*' : '*') +'/index.html');
+
+	//return gulp.src(['./test/browser/'+ (typeof args.open === 'string' ? args.open+'*' : '*') +'/index.html'])
 		.pipe(forEach(function(stream, file){
 			var output, justOS, justBrowser, segments, newName, pathing, dirContents;
 
 			//Get path segments
+			console.log(file.path);
 			output = splitPath(file.path);
 			output.path.pop();
 
@@ -115,6 +76,7 @@ gulp.task('compatibility', ['karma-compatibility'], function() {
 			newName = (segments.length < 3 ? segments.join('.') : segments[0] +'.'+ segments[1]);// + ((justOS && justOS[0]) || '');
 			
 			//Move the files, and clear the old directories
+			console.log(newName);
 			if (newName && output.fileType){
 				pathing = output.path.join('\\');
 				console.log(pathing +'\\'+ newName + output.fileType);
@@ -126,14 +88,14 @@ gulp.task('compatibility', ['karma-compatibility'], function() {
 				}
 			}
 		}))
-		.pipe(check(args.open, open('<%file.path%>')))
-});
+		.pipe(check(args.open, open('<%file.path%>')));
+});*/
 
 //Full Karma run-through for coverage
 gulp.task('karma-coverage', function(done) {
 	var opts = {
 		configFile: __dirname+'/karma.conf.js',
-		singelRun: true,
+		singleRun: true,
 		browsers: args.browsers ? [args.browsers] : ['PhantomJS'],
 		reporters: ['mocha', 'coverage'],
 	};
@@ -143,7 +105,7 @@ gulp.task('karma-coverage', function(done) {
 
 //Test for basic completeness and coverage
 gulp.task('coverage', ['karma-coverage'], function() {
-	return gulp.src(['./test/coverage/Phantom*']) //'+ args.browser ? args.browser : 'Phantom' +'
+	return gulp.src(['./test/results/Phantom*']) //'+ args.browser ? args.browser : 'Phantom' +'
 		.pipe(forEach(function(stream, file){
 			fs.copySync(file.path, splitPath(file.path).path.join('\\'));
 			fs.removeSync(file.path);
