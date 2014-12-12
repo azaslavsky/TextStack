@@ -1,19 +1,30 @@
 {
   "name": "textStack",
-  "author": "Alex Zaslavsky",
+  "author": "Alex Zaslavsky <alex.y.zaslavsky@gmail.com>",
   "version": "0.0.6",
   "description": "A simple undo history script for DOM text fields",
-  "contributors": [
-    {
-      "name": "Alex Zaslavsky"
-    }
+  "contributors": [{
+    "name": "Alex Zaslavsky",
+    "email": "alex.y.zaslavsky@gmail.com"
+  }],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azaslavsky/TextStack"
+  },
+  "bugs": {
+    "url": "https://github.com/azaslavsky/TextStack/issues"
+  },
+  "keywords": [
+    "textstack",
+    "undo",
+    "redo",
+    "history",
+    "textarea",
+    "textinput",
   ],
   "scripts": {
     "coveralls": "gulp coveralls"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/azaslavsky/TextStack.git"
   },
   "devDependencies": {
     "gulp": "~3.8.8",
