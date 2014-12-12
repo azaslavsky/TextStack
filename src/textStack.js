@@ -50,7 +50,7 @@
 	var TextStack = function(el, opts){
 		//Set options
 		this.opts = opts || {};
-		this.opts.idleDelay = this.opts.idleDelay || 1000;
+		this.opts.idleDelay = this.opts.idleDelay || 500;
 		//this.opts.keyHoldDelay = this.opts.keyHoldDelay || 400; //TODO
 		//this.opts.keyHoldInterval = this.opts.keyHoldInterval || 100; //TODO - Probably use this code to throttle undo/redo events appropriately: http://remysharp.com/2010/07/21/throttling-function-calls
 		this.opts.omitWhitespace = this.opts.omitWhitespace || false;
@@ -159,6 +159,12 @@
 		if (this.pressed.indexOf(e.keyCode) === -1) {
 			this.pressed.push(e.keyCode);
 		};
+
+		//Check if Ctrl+V has been depressed - attempt an undo snapshot if it has
+		if (this.pressed.length === 2 && [17, 86].filter( function(v){ return this.pressed.indexOf(v) !== -1; }.bind(this) ).length === 2) {
+			this.snapshot();
+			this.redoStack = []; //Even though Ctrl+V uses a metaKey, because it modifies content of the text field, we will clear the redoStack anyway
+		}
 		this.compareKeys(e);
 	};
 
@@ -332,7 +338,7 @@
 
 			//Remove the last available snapshot
 			snapshot = this.undoStack.pop();
-			if (!snapshot || !snapshot.val) {
+			if (!snapshot || typeof snapshot.val !== 'string') {
 				this.el.value = '';
 				return;
 			}

@@ -102,7 +102,7 @@
 					expect(stack.pressed[1]).toBe(86);
 				});
 
-				it('should clear the redo stack on all non-meta key presses (excluding Ctrl+V for paste)', function(){ //Need to resolve #009 to complete this one
+				it('should clear the redo stack on all non-meta key presses (excluding Ctrl+V for paste)', function(){
 					stack.redoStack = [1,2,3];
 
 					trigger(area, 'keydown', {keyCode: 20}); //CAPS LOCK - not a recordable key, so it redoStack should be unchanged
@@ -117,6 +117,16 @@
 
 					stack.pressed = [];
 					trigger(area, 'keydown', {keyCode: 84});
+					expect(stack.redoStack).toBeEmptyArray();
+				});
+
+				it('should attempt to make a snapshot, and clear the redo stack, anytime a hotkey paste (Ctrl+V) is depressed', function(){
+					var stackSize = stack.undoStack.length;
+					stack.pressed = [];
+					trigger(area, 'keydown', {keyCode: 17}); //Ctrl
+					trigger(area, 'keydown', {keyCode: 86}); //V
+					expect(stack.undoStack).toBeArrayOfSize(stackSize + 1);
+					expect(stack.undoStack[stackSize].val).toBe('foobarquux');
 					expect(stack.redoStack).toBeEmptyArray();
 				});
 
@@ -223,7 +233,7 @@
 					}.bind(this), 60);
 				});
 
-				it('should fire a snapshot attempt after not idling for a specified interval', function(done){ //Need to resolve #010 to complete this one
+				xit('should fire a snapshot attempt after not idling for a specified interval', function(done){ //Need to resolve #010 to complete this one
 					//Make a keypress every 10 seconds
 					var typeKey = function(num) {
 						setTimeout(function(){
