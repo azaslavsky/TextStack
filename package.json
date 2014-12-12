@@ -8,6 +8,13 @@
       "name": "Alex Zaslavsky"
     }
   ],
+  "scripts": {
+    "coveralls": "gulp coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/azaslavsky/TextStack.git"
+  },
   "devDependencies": {
     "gulp": "~3.8.8",
     "gulp-debug": "~1.0.1",
@@ -39,6 +46,7 @@
     "karma-ie-launcher": "~0.1.5",
     "fs-extra": "~0.13.0",
     "gulp-jsdoc-to-markdown": "~0.1.5",
-    "karma-htmlfile-reporter": "~0.1.2"
+    "karma-htmlfile-reporter": "~0.1.2",
+    "gulp-coveralls": "~0.1.3"
   }
 }
