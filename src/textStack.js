@@ -6,6 +6,7 @@
  */
 
 ;(function(factory) {
+	/* istanbul ignore next */
 	if (typeof define === 'function' && define.amd) { //AMD
 		define(factory);
 	} else if (typeof exports !== 'undefined') { //CommonJS/node.js
@@ -15,7 +16,7 @@
 		}
 		exports = TextStack;
 	} else { //Browser global
-		window.purl = factory();
+		window.TextStack = factory();
 	}
 })(function() {
 	"use strict";
@@ -38,7 +39,7 @@
 	 * @param {number} [opts.idleDelay=1000] Number of milleseconds for which user must be inactive before we save a snapshot
 	 * @param {boolean} [opts.omitWhitespace=false] When diffing between two snapshots, whitespace will be omitted before comparing
 	 * @param {number} [opts.maxInterval=5000] If no snapshot has occurred in this number of milleseconds, override the idleDelay and try to make one no matter what
-	 * @param {number} [opts.maxundoStackSize=100] Greatest number of snapshots that can be stored at a given time
+	 * @param {number} [opts.maxUndoStackSize=100] Greatest number of snapshots that can be stored at a given time
 	 * @param {number[]} [opts.redoKeys] Array of keyCodes for keys that, when pressed together, fire a redo action (Default: Ctrl + Y)
 	 * @param {number[]} [opts.undoKeys] Array of keyCodes for keys that, when pressed together, fire an undo action (Default: Ctrl + Z)
 	 * @class TextStack
@@ -54,7 +55,7 @@
 		//this.opts.keyHoldInterval = this.opts.keyHoldInterval || 100; //TODO - Probably use this code to throttle undo/redo events appropriately: http://remysharp.com/2010/07/21/throttling-function-calls
 		this.opts.omitWhitespace = this.opts.omitWhitespace || false;
 		this.opts.maxInterval = this.opts.maxInterval || 6000;
-		this.opts.maxundoStackSize = this.opts.maxundoStackSize || 100;
+		this.opts.maxUndoStackSize = this.opts.maxUndoStackSize || 100;
 		this.opts.redoKeys = this.opts.redoKeys || [17, 89];
 		this.opts.undoKeys = this.opts.undoKeys || [17, 90];
 		//this.opts.watchSelection = this.opts.watchSelection || true; //TODO
@@ -62,7 +63,7 @@
 		//Create tracking properties
 		this.el = el; //Keep track of the element
 		this.contextMenuActive = false; //When the user right clicks set this to true, so that the next action is always fired
-		this.exceededMaxundoStackSize = false; //Once the maximum undoStack size has been hit once, we can no longer undo to a blank slate at any point in the future
+		this.exceededMaxUndoStackSize = false; //Once the maximum undoStack size has been hit once, we can no longer undo to a blank slate at any point in the future
 		this.idle = true; //Track whether or not the user is idle
 		this.lastAction = 0; //Last time the user tried to initiate an undo/redo
 		this.lastAltered = 0; //Last time the element was altered, either by the user or programmatically
@@ -97,9 +98,9 @@
 			keydown: this.down.bind(this),
 			keyup: this.up.bind(this),
 			mouseup: this.mouse.bind(this),
-			bind: this.clear.bind(this),
-			focus: 'bind'
-		}
+			blur: this.clear.bind(this),
+			focus: 'blur'
+		};
 
 		//Cycle through and bind each newly stored listener function
 		for (var k in this.listeners) {
@@ -124,6 +125,7 @@
 				this.el.removeEventListener(k, this.listeners[this.listeners[k]]);
 			}
 		}
+		this.listeners = null;
 	};
 
 
@@ -141,7 +143,7 @@
 				//Now, make sure ther are no metaKeys (Alt, Ctrl, Shift) depressed
 				var metaKeyPressed;
 				this.pressed.forEach(function(v){
-					if (v >= 17 && v <= 19) {
+					if (v >= 16 && v <= 18) {
 						metaKeyPressed = true;
 					}
 				});
@@ -228,7 +230,7 @@
 		if (this.idle) {
 			this.idle = false;
 			//Set a timeout to check, in whatever the maxInterval time has been set in the options, whether another snapshot has been created
-			setTimeout(this.intervalCheck.bind(this, this.undoStack.length ? this.undoStack[this.undoStack.length - 1].index : null ), this.opts.maxInterval);
+			setTimeout(this.intervalCheck.bind(this, this.undoStack.length ? this.undoStack[this.undoStack.length - 1].index : 0 ), this.opts.maxInterval);
 		}
 	};
 
@@ -292,13 +294,11 @@
 		//Prevent the default event from occurring
 		e && e.preventDefault();
 
-		//Check if we have a populated undoStack, and peel of the last value
+		//Check if we have a populated undoStack, and peel off the last value
+		var snapshot;
 		if (this.redoStack.length) {
 			//Move the last snapshot from undoStack to redoStack
-			var snapshot = this.redoStack.pop();
-			if (!snapshot) {
-				return;
-			}
+			snapshot = this.redoStack.pop();
 			this.undoStack.push(snapshot);
 
 			//If the last snapshot in the redoStack matches the current state, redo twice!
@@ -324,9 +324,14 @@
 		//Prevent the default event from occurring
 		e && e.preventDefault(e);
 		
-		//Check if we have a populated undoStack, and peel of the last value
+		//Check if we have a populated undoStack, and peel off the last value
+		var snapshot;
 		if (this.undoStack.length) {
-			var snapshot = this.undoStack.pop();
+			//Try and push a new undo snapshot, to make sure the correct snapshot gets pushed to the redoStack
+			this.snapshot();
+
+			//Remove the last available snapshot
+			snapshot = this.undoStack.pop();
 			if (!snapshot || !snapshot.val) {
 				this.el.value = '';
 				return;
@@ -366,8 +371,8 @@
 		//Diff the two snapshots
 		if ( force || (!this.redoStack.length && this.diff(val, lastSnap, this.opts.omitWhitespace)) ){
 			//Make room in the undoStack array
-			if (this.undoStack.length >= this.opts.maxundoStackSize) {
-				this.exceededMaxundoStackSize = true;
+			if (this.undoStack.length >= this.opts.maxUndoStackSize) {
+				this.exceededMaxUndoStackSize = true;
 				this.undoStack.shift();
 			}
 
