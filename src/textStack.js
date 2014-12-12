@@ -50,7 +50,7 @@
 	var TextStack = function(el, opts){
 		//Set options
 		this.opts = opts || {};
-		this.opts.idleDelay = this.opts.idleDelay || 1000;
+		this.opts.idleDelay = this.opts.idleDelay || 500;
 		//this.opts.keyHoldDelay = this.opts.keyHoldDelay || 400; //TODO
 		//this.opts.keyHoldInterval = this.opts.keyHoldInterval || 100; //TODO - Probably use this code to throttle undo/redo events appropriately: http://remysharp.com/2010/07/21/throttling-function-calls
 		this.opts.omitWhitespace = this.opts.omitWhitespace || false;
@@ -332,7 +332,7 @@
 
 			//Remove the last available snapshot
 			snapshot = this.undoStack.pop();
-			if (!snapshot || !snapshot.val) {
+			if (!snapshot || typeof snapshot.val !== 'string') {
 				this.el.value = '';
 				return;
 			}
