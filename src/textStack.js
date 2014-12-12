@@ -163,6 +163,7 @@
 		//Check if Ctrl+V has been depressed - attempt an undo snapshot if it has
 		if (this.pressed.length === 2 && [17, 86].filter( function(v){ return this.pressed.indexOf(v) !== -1; }.bind(this) ).length === 2) {
 			this.snapshot();
+			this.redoStack = []; //Even though Ctrl+V uses a metaKey, because it modifies content of the text field, we will clear the redoStack anyway
 		}
 		this.compareKeys(e);
 	};
