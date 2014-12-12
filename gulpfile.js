@@ -10,6 +10,7 @@ var bump = require('gulp-bump');
 var concat = require('gulp-concat');
 var debug = require('gulp-debug');
 var check = require('gulp-if');
+var coveralls = require('gulp-coveralls');
 var doc = require('gulp-jsdoc-to-markdown');
 var forEach = require('gulp-foreach');
 var karma = require('karma').server;
@@ -157,4 +158,12 @@ gulp.task('build', ['copy'], function() {
 			path.basename += '.min';
 		}))
 		.pipe(gulp.dest('./dist'))
+});
+
+
+
+//Submit to coveralls
+gulp.task('coveralls', function() {
+	gulp.src('./test/**/lcov.info')
+		.pipe(coveralls());
 });

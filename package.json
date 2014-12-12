@@ -39,6 +39,7 @@
     "karma-ie-launcher": "~0.1.5",
     "fs-extra": "~0.13.0",
     "gulp-jsdoc-to-markdown": "~0.1.5",
-    "karma-htmlfile-reporter": "~0.1.2"
+    "karma-htmlfile-reporter": "~0.1.2",
+    "gulp-coveralls": "~0.1.3"
   }
 }
