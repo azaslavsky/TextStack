@@ -347,10 +347,6 @@
 
 			//Remove the last available snapshot
 			snapshot = this.undoStack.pop();
-			if (!snapshot || typeof snapshot.val !== 'string') {
-				this.el.value = '';
-				return;
-			}
 			this.redoStack.push(snapshot);
 
 			//If the last snapshot in the undoStack matches the current state, redo twice!
