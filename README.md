@@ -63,7 +63,7 @@ Create a new instance of TextStack
   - \[idleDelay=1000\] `number` - Number of milleseconds for which user must be inactive before we save a snapshot  
   - \[omitWhitespace=false\] `boolean` - When diffing between two snapshots, whitespace will be omitted before comparing  
   - \[maxInterval=5000\] `number` - If no snapshot has occurred in this number of milleseconds, override the idleDelay and try to make one no matter what  
-  - \[maxundoStackSize=100\] `number` - Greatest number of snapshots that can be stored at a given time  
+  - \[maxUndoStackSize=100\] `number` - Greatest number of snapshots that can be stored at a given time  
   - \[redoKeys\] `Array.<number>` - Array of keyCodes for keys that, when pressed together, fire a redo action (Default: Ctrl + Y)  
   - \[undoKeys\] `Array.<number>` - Array of keyCodes for keys that, when pressed together, fire an undo action (Default: Ctrl + Z)  
 
