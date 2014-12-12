@@ -54,7 +54,7 @@
 		//this.opts.keyHoldDelay = this.opts.keyHoldDelay || 400; //TODO
 		//this.opts.keyHoldInterval = this.opts.keyHoldInterval || 100; //TODO - Probably use this code to throttle undo/redo events appropriately: http://remysharp.com/2010/07/21/throttling-function-calls
 		this.opts.omitWhitespace = this.opts.omitWhitespace || false;
-		this.opts.maxInterval = this.opts.maxInterval || 6000;
+		this.opts.maxInterval = this.opts.maxInterval && this.opts.maxInterval > 1.2 * this.opts.idleDelay ? opts.maxInterval : 1.2 * this.opts.idleDelay < 4000 ? 4000 : 1.2 * this.opts.idleDelay; //The maxInterval must be at least 1.2x the idleDelay
 		this.opts.maxUndoStackSize = this.opts.maxUndoStackSize || 100;
 		this.opts.redoKeys = this.opts.redoKeys || [17, 89];
 		this.opts.undoKeys = this.opts.undoKeys || [17, 90];
@@ -137,14 +137,14 @@
 		this.eventFired(e);
 
 		//If the redoStack is populated, as soon as the user presses a recordable key, we can reset it and wipe all of our existing undo events
+		var unaltered, metaKeyPressed;
 		if (this.redoStack.length) {
 			//Check for "recordable" keys: alphanumberics keys, puncuation keys, enter, and backspace
 			if ( e.keyCode === 8 || e.keyCode === 13 || (e.keyCode > 47 && e.keyCode < 91) || e.keyCode > 185 ) {
 				//Now, make sure ther are no metaKeys (Alt, Ctrl, Shift) depressed
-				var metaKeyPressed;
 				this.pressed.forEach(function(v){
 					if (v >= 16 && v <= 18) {
-						metaKeyPressed = true;
+						unaltered = metaKeyPressed = true;
 					}
 				});
 
@@ -164,6 +164,12 @@
 		if (this.pressed.length === 2 && [17, 86].filter( function(v){ return this.pressed.indexOf(v) !== -1; }.bind(this) ).length === 2) {
 			this.snapshot();
 			this.redoStack = []; //Even though Ctrl+V uses a metaKey, because it modifies content of the text field, we will clear the redoStack anyway
+			unaltered = false;
+		}
+
+		//If this text was altered, update the lastAltered event
+		if (!unaltered) {
+			this.lastAltered = getTime();
 		}
 		this.compareKeys(e);
 	};
@@ -188,7 +194,7 @@
 		}
 
 		//Set a timeout to check, in whatever idleDelay time has been set in the options, whether the user has changed the inputs at all
-		setTimeout(this.idleCheck.bind(this, getTime()), this.opts.idleDelay + 5);
+		setTimeout( this.idleCheck.bind( this, getTime() ), this.opts.idleDelay + 5 );
 	};
 
 
@@ -206,7 +212,7 @@
 		}
 
 		//Set a timeout to check, in whatever idleDelay time has been set in the options, whether the user has changed the inputs at all
-		setTimeout(this.idleCheck.bind(this, getTime()), this.opts.idleDelay + 5);
+		setTimeout( this.idleCheck.bind( this, getTime() ), this.opts.idleDelay + 5 );
 	};
 
 
@@ -236,7 +242,7 @@
 		if (this.idle) {
 			this.idle = false;
 			//Set a timeout to check, in whatever the maxInterval time has been set in the options, whether another snapshot has been created
-			setTimeout(this.intervalCheck.bind(this, this.undoStack.length ? this.undoStack[this.undoStack.length - 1].index : 0 ), this.opts.maxInterval);
+			setTimeout( this.intervalCheck.bind( this, this.undoStack.length ? this.undoStack[this.undoStack.length - 1].index : 0 ), this.opts.maxInterval );
 		}
 	};
 
@@ -259,7 +265,10 @@
 	//@private
 	TextStack.prototype.intervalCheck = function(snapIndex){
 		if (typeof snapIndex === 'number' && snapIndex <= this.snapCounter) {
-			this.snapshot();
+			if (this.snapshot()){
+				//Set a timeout to check the maxInterval again
+				setTimeout( this.intervalCheck.bind( this, this.undoStack.length ? this.undoStack[this.undoStack.length - 1].index : 0 ), this.opts.maxInterval );
+			}
 		}
 	};
 
@@ -338,10 +347,6 @@
 
 			//Remove the last available snapshot
 			snapshot = this.undoStack.pop();
-			if (!snapshot || typeof snapshot.val !== 'string') {
-				this.el.value = '';
-				return;
-			}
 			this.redoStack.push(snapshot);
 
 			//If the last snapshot in the undoStack matches the current state, redo twice!

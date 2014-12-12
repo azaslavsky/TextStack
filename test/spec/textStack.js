@@ -57,6 +57,7 @@
 		});
 
 
+
 		describe('Basic creation and teardown', function(){
 
 			it('should bind to an existing textarea field', function(){
@@ -75,6 +76,7 @@
 		describe('Event handling', function(){
 			beforeEach(function(){
 				stack.undoStack = sampleStack.slice();
+				stack.snapCounter = 3;
 				area.value = sampleText;
 			});
 
@@ -211,8 +213,8 @@
 					area = null;
 					stack = null;
 					
-					this.asyncStack.opts.idleDelay = 40; //Use much shorter intervals for programmatic testing
-					this.asyncStack.opts.maxInterval = 100;
+					this.asyncStack.opts.idleDelay = 160; //Use much shorter intervals for programmatic testing
+					this.asyncStack.opts.maxInterval = 400;
 				});
 
 				it('should fire a snapshot attempt after idling for a specified interval', function(done){
@@ -222,7 +224,7 @@
 					//Make sure idle is set to false immediately after typing
 					setTimeout(function(){
 						expect(this.asyncStack.idle).toBeFalse();
-					}.bind(this), 20);
+					}.bind(this), 80);
 
 					//Check after idleDelay has passed
 					setTimeout(function(){
@@ -230,38 +232,38 @@
 						expect(this.asyncStack.undoStack).toBeArray();
 						expect(this.asyncStack.undoStack[this.asyncStack.undoStack.length - 1].val).toBe('foobarquux');
 						done();
-					}.bind(this), 60);
+					}.bind(this), 240);
 				});
 
-				xit('should fire a snapshot attempt after not idling for a specified interval', function(done){ //Need to resolve #010 to complete this one
+				it('should fire a snapshot attempt after not idling for a specified interval', function(done){ //Need to resolve #010 to complete this one
 					//Make a keypress every 10 seconds
 					var typeKey = function(num) {
 						setTimeout(function(){
 							trigger(this.asyncArea, 'keydown', {keyCode: 48 + num});
 							trigger(this.asyncArea, 'keyup', {keyCode: 48 + num});
 							this.asyncArea.value += num;
-							if (num === 8) {
+							if (num === 5) {
 								done();
 							}
-						}.bind(this), 22 * i);
+						}.bind(this), 120 * num);
 					}.bind(this);
 					this.asyncArea.value = 'abcd';
 
-					for (var i = 0; i <= 8; i++) {
+					for (var i = 0; i <= 5; i++) {
 						typeKey(i);
 					}
 
 					//Make sure idle is set to false immediately after typing
 					setTimeout(function(){
 						expect(this.asyncStack.idle).toBeFalse();
-					}.bind(this), 60);
+					}.bind(this), 200);
 
 					//Check after idleDelay has passed
 					setTimeout(function(){
 						expect(this.asyncStack.idle).toBeFalse();
 						expect(this.asyncStack.undoStack).toEqual(jasmine.any(Array));
-						expect(this.asyncStack.undoStack.length).toEqual(3);
-					}.bind(this), 120);
+						expect(this.asyncStack.undoStack.length).toEqual(4);
+					}.bind(this), 500);
 				});
 
 				afterEach(function(done){
