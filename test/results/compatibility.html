@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Unit Test Results</title>
+    <style type="text/css">html,body{font-family:Arial,sans-serif;margin:0;padding:0;}body{padding:10px 40px;}table{width:100%;margin-bottom:20px;}tr.header{background:#ddd;font-weight:bold;border-bottom:none;}td{padding:7px;border-top:none;border-left:1px black solid;border-bottom:1px black solid;border-right:none;}tr.pass td{color:#003b07;background:#86e191;}tr.skip td{color:#7d3a00;background:#ffd24a;}tr.fail td{color:#5e0e00;background:#ff9c8a;}tr:first-child td{border-top:1px black solid;}td:last-child{border-right:1px black solid;}tr.overview{font-weight:bold;color:#777;}tr.overview td{padding-bottom:0px;border-bottom:none;}tr.system-out td{color:#777;}hr{height:2px;margin:30px 0;background:#000;border:none;}</style>
+  </head>
+  <body>
+    <h1>Unit Test Results</h1>
+    <table cellspacing="0" cellpadding="0" border="0">
+      <tr class="overview">
+        <td colspan="3" title="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36">Browser: Chrome 39.0.2171 (Windows 7)</td>
+      </tr>
+      <tr class="overview">
+        <td colspan="3">Timestamp: 2014-12-12T05:34:38</td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          20 tests / 
+          0 errors / 
+          0 failures / 
+          0 skipped / 
+          runtime: 0.315s
+        </td>
+      </tr>
+      <tr class="header">
+        <td>Status</td>
+        <td>Spec</td>
+        <td>Suite / Results</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.015s</td>
+        <td>should bind to an existing textarea field</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.005s</td>
+        <td>should unbind from an existing textarea field with no memory leaks</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.006s</td>
+        <td>should track keys that are currently depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should clear the redo stack on all non-meta key presses (excluding Ctrl+V for paste)</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should respect right clicks within the bounds of the element, and immediately attempt a snapshot</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should clear tracked keys on element blur and focus</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to manually clear all tracked keys</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to detect when the appropriate key combo for an undo/redo operation is depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should respect arbitrarily defined undo/redo combos</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.064s</td>
+        <td>should fire a snapshot attempt after idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.183s</td>
+        <td>should fire a snapshot attempt after not idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should have a &quot;diff&quot; method for comparing similarity between two strings</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>should be able to set the &quot;diff&quot; method to ignore white-space when doing comparisons</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to make a simple snapshot and save it in the stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should be force a snapshot onto the undo stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should pop old snapshots off the undo stack when it reaches its maximum size</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.008s</td>
+        <td>should be able to make a simple snapshot, then undo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should be able to make a simple snapshot, then undo it, then redo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to reset the stacks</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to reset the stacks and clear the bound text field simultaneously</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+    </table>
+    <hr/>
+  </body>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Unit Test Results</title>
+    <style type="text/css">html,body{font-family:Arial,sans-serif;margin:0;padding:0;}body{padding:10px 40px;}table{width:100%;margin-bottom:20px;}tr.header{background:#ddd;font-weight:bold;border-bottom:none;}td{padding:7px;border-top:none;border-left:1px black solid;border-bottom:1px black solid;border-right:none;}tr.pass td{color:#003b07;background:#86e191;}tr.skip td{color:#7d3a00;background:#ffd24a;}tr.fail td{color:#5e0e00;background:#ff9c8a;}tr:first-child td{border-top:1px black solid;}td:last-child{border-right:1px black solid;}tr.overview{font-weight:bold;color:#777;}tr.overview td{padding-bottom:0px;border-bottom:none;}tr.system-out td{color:#777;}hr{height:2px;margin:30px 0;background:#000;border:none;}</style>
+  </head>
+  <body>
+    <h1>Unit Test Results</h1>
+    <table cellspacing="0" cellpadding="0" border="0">
+      <tr class="overview">
+        <td colspan="3" title="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34">Browser: PhantomJS 1.9.8 (Windows 7)</td>
+      </tr>
+      <tr class="overview">
+        <td colspan="3">Timestamp: 2014-12-12T05:34:38</td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          20 tests / 
+          0 errors / 
+          0 failures / 
+          0 skipped / 
+          runtime: 0.431s
+        </td>
+      </tr>
+      <tr class="header">
+        <td>Status</td>
+        <td>Spec</td>
+        <td>Suite / Results</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.017s</td>
+        <td>should bind to an existing textarea field</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should unbind from an existing textarea field with no memory leaks</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.129s</td>
+        <td>should track keys that are currently depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should clear the redo stack on all non-meta key presses (excluding Ctrl+V for paste)</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should respect right clicks within the bounds of the element, and immediately attempt a snapshot</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should clear tracked keys on element blur and focus</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to manually clear all tracked keys</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to detect when the appropriate key combo for an undo/redo operation is depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should respect arbitrarily defined undo/redo combos</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.064s</td>
+        <td>should fire a snapshot attempt after idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.199s</td>
+        <td>should fire a snapshot attempt after not idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should have a &quot;diff&quot; method for comparing similarity between two strings</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to set the &quot;diff&quot; method to ignore white-space when doing comparisons</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to make a simple snapshot and save it in the stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be force a snapshot onto the undo stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should pop old snapshots off the undo stack when it reaches its maximum size</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to make a simple snapshot, then undo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to make a simple snapshot, then undo it, then redo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0s</td>
+        <td>should be able to reset the stacks</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0s</td>
+        <td>should be able to reset the stacks and clear the bound text field simultaneously</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+    </table>
+    <hr/>
+  </body>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Unit Test Results</title>
+    <style type="text/css">html,body{font-family:Arial,sans-serif;margin:0;padding:0;}body{padding:10px 40px;}table{width:100%;margin-bottom:20px;}tr.header{background:#ddd;font-weight:bold;border-bottom:none;}td{padding:7px;border-top:none;border-left:1px black solid;border-bottom:1px black solid;border-right:none;}tr.pass td{color:#003b07;background:#86e191;}tr.skip td{color:#7d3a00;background:#ffd24a;}tr.fail td{color:#5e0e00;background:#ff9c8a;}tr:first-child td{border-top:1px black solid;}td:last-child{border-right:1px black solid;}tr.overview{font-weight:bold;color:#777;}tr.overview td{padding-bottom:0px;border-bottom:none;}tr.system-out td{color:#777;}hr{height:2px;margin:30px 0;background:#000;border:none;}</style>
+  </head>
+  <body>
+    <h1>Unit Test Results</h1>
+    <table cellspacing="0" cellpadding="0" border="0">
+      <tr class="overview">
+        <td colspan="3" title="Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; rv:11.0) like Gecko">Browser: IE 11.0.0 (Windows 7)</td>
+      </tr>
+      <tr class="overview">
+        <td colspan="3">Timestamp: 2014-12-12T05:34:39</td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          20 tests / 
+          0 errors / 
+          0 failures / 
+          0 skipped / 
+          runtime: 0.313s
+        </td>
+      </tr>
+      <tr class="header">
+        <td>Status</td>
+        <td>Spec</td>
+        <td>Suite / Results</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should bind to an existing textarea field</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should unbind from an existing textarea field with no memory leaks</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.012s</td>
+        <td>should track keys that are currently depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should clear the redo stack on all non-meta key presses (excluding Ctrl+V for paste)</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should respect right clicks within the bounds of the element, and immediately attempt a snapshot</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should clear tracked keys on element blur and focus</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to manually clear all tracked keys</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to detect when the appropriate key combo for an undo/redo operation is depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should respect arbitrarily defined undo/redo combos</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.063s</td>
+        <td>should fire a snapshot attempt after idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.183s</td>
+        <td>should fire a snapshot attempt after not idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should have a &quot;diff&quot; method for comparing similarity between two strings</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to set the &quot;diff&quot; method to ignore white-space when doing comparisons</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to make a simple snapshot and save it in the stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.005s</td>
+        <td>should be force a snapshot onto the undo stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.009s</td>
+        <td>should pop old snapshots off the undo stack when it reaches its maximum size</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to make a simple snapshot, then undo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should be able to make a simple snapshot, then undo it, then redo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.017s</td>
+        <td>should be able to reset the stacks</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to reset the stacks and clear the bound text field simultaneously</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+    </table>
+    <hr/>
+  </body>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Unit Test Results</title>
+    <style type="text/css">html,body{font-family:Arial,sans-serif;margin:0;padding:0;}body{padding:10px 40px;}table{width:100%;margin-bottom:20px;}tr.header{background:#ddd;font-weight:bold;border-bottom:none;}td{padding:7px;border-top:none;border-left:1px black solid;border-bottom:1px black solid;border-right:none;}tr.pass td{color:#003b07;background:#86e191;}tr.skip td{color:#7d3a00;background:#ffd24a;}tr.fail td{color:#5e0e00;background:#ff9c8a;}tr:first-child td{border-top:1px black solid;}td:last-child{border-right:1px black solid;}tr.overview{font-weight:bold;color:#777;}tr.overview td{padding-bottom:0px;border-bottom:none;}tr.system-out td{color:#777;}hr{height:2px;margin:30px 0;background:#000;border:none;}</style>
+  </head>
+  <body>
+    <h1>Unit Test Results</h1>
+    <table cellspacing="0" cellpadding="0" border="0">
+      <tr class="overview">
+        <td colspan="3" title="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2247.1 Safari/537.36">Browser: Chrome 41.0.2247 (Windows 7)</td>
+      </tr>
+      <tr class="overview">
+        <td colspan="3">Timestamp: 2014-12-12T05:34:39</td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          20 tests / 
+          0 errors / 
+          0 failures / 
+          0 skipped / 
+          runtime: 0.385s
+        </td>
+      </tr>
+      <tr class="header">
+        <td>Status</td>
+        <td>Spec</td>
+        <td>Suite / Results</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.021s</td>
+        <td>should bind to an existing textarea field</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.048s</td>
+        <td>should unbind from an existing textarea field with no memory leaks</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.008s</td>
+        <td>should track keys that are currently depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>should clear the redo stack on all non-meta key presses (excluding Ctrl+V for paste)</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.005s</td>
+        <td>should respect right clicks within the bounds of the element, and immediately attempt a snapshot</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>should clear tracked keys on element blur and focus</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to manually clear all tracked keys</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>should be able to detect when the appropriate key combo for an undo/redo operation is depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should respect arbitrarily defined undo/redo combos</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.065s</td>
+        <td>should fire a snapshot attempt after idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.202s</td>
+        <td>should fire a snapshot attempt after not idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should have a &quot;diff&quot; method for comparing similarity between two strings</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to set the &quot;diff&quot; method to ignore white-space when doing comparisons</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to make a simple snapshot and save it in the stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be force a snapshot onto the undo stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should pop old snapshots off the undo stack when it reaches its maximum size</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to make a simple snapshot, then undo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.006s</td>
+        <td>should be able to make a simple snapshot, then undo it, then redo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to reset the stacks</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to reset the stacks and clear the bound text field simultaneously</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+    </table>
+    <hr/>
+  </body>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Unit Test Results</title>
+    <style type="text/css">html,body{font-family:Arial,sans-serif;margin:0;padding:0;}body{padding:10px 40px;}table{width:100%;margin-bottom:20px;}tr.header{background:#ddd;font-weight:bold;border-bottom:none;}td{padding:7px;border-top:none;border-left:1px black solid;border-bottom:1px black solid;border-right:none;}tr.pass td{color:#003b07;background:#86e191;}tr.skip td{color:#7d3a00;background:#ffd24a;}tr.fail td{color:#5e0e00;background:#ff9c8a;}tr:first-child td{border-top:1px black solid;}td:last-child{border-right:1px black solid;}tr.overview{font-weight:bold;color:#777;}tr.overview td{padding-bottom:0px;border-bottom:none;}tr.system-out td{color:#777;}hr{height:2px;margin:30px 0;background:#000;border:none;}</style>
+  </head>
+  <body>
+    <h1>Unit Test Results</h1>
+    <table cellspacing="0" cellpadding="0" border="0">
+      <tr class="overview">
+        <td colspan="3" title="Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)">Browser: IE 9.0.0 (Windows 7)</td>
+      </tr>
+      <tr class="overview">
+        <td colspan="3">Timestamp: 2014-12-12T05:34:39</td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          20 tests / 
+          0 errors / 
+          0 failures / 
+          0 skipped / 
+          runtime: 0.303s
+        </td>
+      </tr>
+      <tr class="header">
+        <td>Status</td>
+        <td>Spec</td>
+        <td>Suite / Results</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should bind to an existing textarea field</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should unbind from an existing textarea field with no memory leaks</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.005s</td>
+        <td>should track keys that are currently depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should clear the redo stack on all non-meta key presses (excluding Ctrl+V for paste)</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should respect right clicks within the bounds of the element, and immediately attempt a snapshot</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should clear tracked keys on element blur and focus</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to manually clear all tracked keys</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to detect when the appropriate key combo for an undo/redo operation is depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should respect arbitrarily defined undo/redo combos</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.077s</td>
+        <td>should fire a snapshot attempt after idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.184s</td>
+        <td>should fire a snapshot attempt after not idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0s</td>
+        <td>should have a &quot;diff&quot; method for comparing similarity between two strings</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to set the &quot;diff&quot; method to ignore white-space when doing comparisons</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should be able to make a simple snapshot and save it in the stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.005s</td>
+        <td>should be force a snapshot onto the undo stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should pop old snapshots off the undo stack when it reaches its maximum size</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.006s</td>
+        <td>should be able to make a simple snapshot, then undo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.005s</td>
+        <td>should be able to make a simple snapshot, then undo it, then redo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to reset the stacks</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to reset the stacks and clear the bound text field simultaneously</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+    </table>
+    <hr/>
+  </body>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Unit Test Results</title>
+    <style type="text/css">html,body{font-family:Arial,sans-serif;margin:0;padding:0;}body{padding:10px 40px;}table{width:100%;margin-bottom:20px;}tr.header{background:#ddd;font-weight:bold;border-bottom:none;}td{padding:7px;border-top:none;border-left:1px black solid;border-bottom:1px black solid;border-right:none;}tr.pass td{color:#003b07;background:#86e191;}tr.skip td{color:#7d3a00;background:#ffd24a;}tr.fail td{color:#5e0e00;background:#ff9c8a;}tr:first-child td{border-top:1px black solid;}td:last-child{border-right:1px black solid;}tr.overview{font-weight:bold;color:#777;}tr.overview td{padding-bottom:0px;border-bottom:none;}tr.system-out td{color:#777;}hr{height:2px;margin:30px 0;background:#000;border:none;}</style>
+  </head>
+  <body>
+    <h1>Unit Test Results</h1>
+    <table cellspacing="0" cellpadding="0" border="0">
+      <tr class="overview">
+        <td colspan="3" title="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0">Browser: Firefox 24.0.0 (Windows 7)</td>
+      </tr>
+      <tr class="overview">
+        <td colspan="3">Timestamp: 2014-12-12T05:34:39</td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          20 tests / 
+          0 errors / 
+          0 failures / 
+          0 skipped / 
+          runtime: 0.283s
+        </td>
+      </tr>
+      <tr class="header">
+        <td>Status</td>
+        <td>Spec</td>
+        <td>Suite / Results</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>should bind to an existing textarea field</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should unbind from an existing textarea field with no memory leaks</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.006s</td>
+        <td>should track keys that are currently depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should clear the redo stack on all non-meta key presses (excluding Ctrl+V for paste)</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should respect right clicks within the bounds of the element, and immediately attempt a snapshot</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should clear tracked keys on element blur and focus</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to manually clear all tracked keys</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to detect when the appropriate key combo for an undo/redo operation is depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should respect arbitrarily defined undo/redo combos</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.066s</td>
+        <td>should fire a snapshot attempt after idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.179s</td>
+        <td>should fire a snapshot attempt after not idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should have a &quot;diff&quot; method for comparing similarity between two strings</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to set the &quot;diff&quot; method to ignore white-space when doing comparisons</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to make a simple snapshot and save it in the stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be force a snapshot onto the undo stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should pop old snapshots off the undo stack when it reaches its maximum size</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to make a simple snapshot, then undo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to make a simple snapshot, then undo it, then redo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to reset the stacks</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to reset the stacks and clear the bound text field simultaneously</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+    </table>
+    <hr/>
+  </body>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Unit Test Results</title>
+    <style type="text/css">html,body{font-family:Arial,sans-serif;margin:0;padding:0;}body{padding:10px 40px;}table{width:100%;margin-bottom:20px;}tr.header{background:#ddd;font-weight:bold;border-bottom:none;}td{padding:7px;border-top:none;border-left:1px black solid;border-bottom:1px black solid;border-right:none;}tr.pass td{color:#003b07;background:#86e191;}tr.skip td{color:#7d3a00;background:#ffd24a;}tr.fail td{color:#5e0e00;background:#ff9c8a;}tr:first-child td{border-top:1px black solid;}td:last-child{border-right:1px black solid;}tr.overview{font-weight:bold;color:#777;}tr.overview td{padding-bottom:0px;border-bottom:none;}tr.system-out td{color:#777;}hr{height:2px;margin:30px 0;background:#000;border:none;}</style>
+  </head>
+  <body>
+    <h1>Unit Test Results</h1>
+    <table cellspacing="0" cellpadding="0" border="0">
+      <tr class="overview">
+        <td colspan="3" title="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)">Browser: IE 10.0.0 (Windows 7)</td>
+      </tr>
+      <tr class="overview">
+        <td colspan="3">Timestamp: 2014-12-12T05:34:40</td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          20 tests / 
+          0 errors / 
+          0 failures / 
+          0 skipped / 
+          runtime: 0.286s
+        </td>
+      </tr>
+      <tr class="header">
+        <td>Status</td>
+        <td>Spec</td>
+        <td>Suite / Results</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should bind to an existing textarea field</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should unbind from an existing textarea field with no memory leaks</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.008s</td>
+        <td>should track keys that are currently depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should clear the redo stack on all non-meta key presses (excluding Ctrl+V for paste)</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should respect right clicks within the bounds of the element, and immediately attempt a snapshot</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should clear tracked keys on element blur and focus</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to manually clear all tracked keys</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to detect when the appropriate key combo for an undo/redo operation is depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should respect arbitrarily defined undo/redo combos</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.063s</td>
+        <td>should fire a snapshot attempt after idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.185s</td>
+        <td>should fire a snapshot attempt after not idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0s</td>
+        <td>should have a &quot;diff&quot; method for comparing similarity between two strings</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0s</td>
+        <td>should be able to set the &quot;diff&quot; method to ignore white-space when doing comparisons</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to make a simple snapshot and save it in the stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.005s</td>
+        <td>should be force a snapshot onto the undo stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should pop old snapshots off the undo stack when it reaches its maximum size</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to make a simple snapshot, then undo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should be able to make a simple snapshot, then undo it, then redo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to reset the stacks</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to reset the stacks and clear the bound text field simultaneously</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+    </table>
+    <hr/>
+  </body>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Unit Test Results</title>
+    <style type="text/css">html,body{font-family:Arial,sans-serif;margin:0;padding:0;}body{padding:10px 40px;}table{width:100%;margin-bottom:20px;}tr.header{background:#ddd;font-weight:bold;border-bottom:none;}td{padding:7px;border-top:none;border-left:1px black solid;border-bottom:1px black solid;border-right:none;}tr.pass td{color:#003b07;background:#86e191;}tr.skip td{color:#7d3a00;background:#ffd24a;}tr.fail td{color:#5e0e00;background:#ff9c8a;}tr:first-child td{border-top:1px black solid;}td:last-child{border-right:1px black solid;}tr.overview{font-weight:bold;color:#777;}tr.overview td{padding-bottom:0px;border-bottom:none;}tr.system-out td{color:#777;}hr{height:2px;margin:30px 0;background:#000;border:none;}</style>
+  </head>
+  <body>
+    <h1>Unit Test Results</h1>
+    <table cellspacing="0" cellpadding="0" border="0">
+      <tr class="overview">
+        <td colspan="3" title="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:36.0) Gecko/20100101 Firefox/36.0">Browser: Firefox 36.0.0 (Windows 7)</td>
+      </tr>
+      <tr class="overview">
+        <td colspan="3">Timestamp: 2014-12-12T05:34:40</td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          20 tests / 
+          0 errors / 
+          0 failures / 
+          0 skipped / 
+          runtime: 0.279s
+        </td>
+      </tr>
+      <tr class="header">
+        <td>Status</td>
+        <td>Spec</td>
+        <td>Suite / Results</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should bind to an existing textarea field</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should unbind from an existing textarea field with no memory leaks</td>
+        <td>TextStack &raquo; Basic creation and teardown</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.006s</td>
+        <td>should track keys that are currently depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should clear the redo stack on all non-meta key presses (excluding Ctrl+V for paste)</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should respect right clicks within the bounds of the element, and immediately attempt a snapshot</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should clear tracked keys on element blur and focus</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to manually clear all tracked keys</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to detect when the appropriate key combo for an undo/redo operation is depressed</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should respect arbitrarily defined undo/redo combos</td>
+        <td>TextStack &raquo; Event handling &raquo; For UI events</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.062s</td>
+        <td>should fire a snapshot attempt after idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.18s</td>
+        <td>should fire a snapshot attempt after not idling for a specified interval</td>
+        <td>TextStack &raquo; Event handling &raquo; For idle timers</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should have a &quot;diff&quot; method for comparing similarity between two strings</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to set the &quot;diff&quot; method to ignore white-space when doing comparisons</td>
+        <td>TextStack &raquo; Public API &raquo; Diffing operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to make a simple snapshot and save it in the stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.005s</td>
+        <td>should be force a snapshot onto the undo stack</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should pop old snapshots off the undo stack when it reaches its maximum size</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should be able to make a simple snapshot, then undo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to make a simple snapshot, then undo it, then redo it</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to reset the stacks</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.001s</td>
+        <td>should be able to reset the stacks and clear the bound text field simultaneously</td>
+        <td>TextStack &raquo; Public API &raquo; Undo/redo stack operations</td>
+      </tr>
+    </table>
+    <hr/>
+  </body>
+</html>
