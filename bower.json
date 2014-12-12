@@ -1,0 +1,46 @@
+{
+  "name": "textstack",
+  "version": "0.1.0",
+  "description": "A simple undo history script for DOM text fields",
+  "main": "dist/textStack.js",
+  "license": "MIT",
+  "authors": [
+    "Alex Zaslavsky <alex.y.zaslavsky@gmail.com>"
+  ],
+  "keywords": [
+    "textstack",
+    "undo",
+    "redo",
+    "history",
+    "textarea",
+    "textinput"
+  ],
+  "homepage": "https://github.com/azaslavsky/TextStack",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azaslavsky/TextStack"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "docs",
+    "src",
+    "test",
+    "*.conf.js",
+    "*.md",
+    "npm-debug.txt",
+    "gulpfile.js",
+    "package.json"
+  ],
+  "keywords": [
+    "jquery",
+    "javascript",
+    "library"
+  ],
+  "devDependencies": {
+    "gulp": "~3.8.8",
+    "karma": "~0.12.28",
+    "jasmine": "2.0.4",
+    "phantomjs": "~1.9.12",
+  }
+}
