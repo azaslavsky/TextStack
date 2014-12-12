@@ -159,6 +159,11 @@
 		if (this.pressed.indexOf(e.keyCode) === -1) {
 			this.pressed.push(e.keyCode);
 		};
+
+		//Check if Ctrl+V has been depressed - attempt an undo snapshot if it has
+		if (this.pressed.length === 2 && [17, 86].filter( function(v){ return this.pressed.indexOf(v) !== -1; }.bind(this) ).length === 2) {
+			this.snapshot();
+		}
 		this.compareKeys(e);
 	};
 
