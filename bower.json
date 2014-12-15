@@ -31,10 +31,5 @@
     "npm-debug.txt",
     "gulpfile.js",
     "package.json"
-  ],
-  "keywords": [
-    "jquery",
-    "javascript",
-    "library"
-  ],
+  ]
 }

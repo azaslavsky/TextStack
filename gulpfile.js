@@ -139,7 +139,7 @@ gulp.task('docs', ['api'], function() {
 
 //Bump the version
 gulp.task('bump', ['docs'], function() {
-	gulp.src(['./package.json'])
+	gulp.src(['./package.json', './bower.json'])
 		.pipe(bump({type: args.vers || 'patch'}))
 		.pipe(gulp.dest('./'));
 });
