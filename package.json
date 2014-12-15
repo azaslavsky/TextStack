@@ -28,6 +28,13 @@
   "scripts": {
     "coveralls": "gulp coveralls"
   },
+  "main": "dist/textStack.js",
+  "files": [
+    "./dist/**",
+    "./examples/**",
+    "./README.md"
+  ],
+  "dependencies": {},
   "devDependencies": {
     "gulp": "~3.8.8",
     "gulp-debug": "~1.0.1",
