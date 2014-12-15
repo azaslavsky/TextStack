@@ -1,7 +1,7 @@
 {
   "name": "textstack",
   "author": "Alex Zaslavsky <alex.y.zaslavsky@gmail.com>",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple undo history script for DOM text fields",
   "contributors": [
     {
@@ -30,9 +30,10 @@
   },
   "main": "dist/textStack.js",
   "files": [
-    "./dist/**",
-    "./examples/**",
-    "./README.md"
+    "dist/textStack.js",
+    "dist/textStack.min.js",
+    "examples/**",
+    "LICENSE.md"
   ],
   "dependencies": {},
   "devDependencies": {
