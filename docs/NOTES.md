@@ -1,4 +1,5 @@
 # TextStack
+[![License](https://img.shields.io/cocoapods/l/AFNetworking.svg)](https://github.com/azaslavsky/TextStack#license) [![Bower Version](https://badge.fury.io/bo/textstack.svg)](http://badge.fury.io/bo/textstack) [![NPM Version](https://badge.fury.io/js/textstack.svg)](http://badge.fury.io/js/textstack)
 
 The undo functionality for various text input fields on many browsers is very unpredictable.  TextStack is a simple undo history script for DOM text input fields.  It also comes with an easy to use API which allows developers to safely modify the undo stack at their own discretion.  This library lightweight and has no dependencies.  Currently, I've test its compatibility with the latest versions of Chrome and Firefox.
 
