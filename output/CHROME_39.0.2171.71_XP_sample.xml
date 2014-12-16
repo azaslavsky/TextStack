@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="sample"
+             errors="0"
+             failures="0"
+             tests="1">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Sample test" package="sample" skipped="0"
+    tests="1" time="" timestamp="">
+    
+    
+      <testcase name="Testing if the page title equals &quot;Google&quot;.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>
