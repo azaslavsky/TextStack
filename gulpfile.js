@@ -14,6 +14,7 @@ var coveralls = require('gulp-coveralls');
 var doc = require('gulp-jsdoc-to-markdown');
 var forEach = require('gulp-foreach');
 var karma = require('karma').server;
+var nightwatch = require('gulp-nightwatch');
 var open = require('gulp-open');
 var regrep = require('gulp-regex-replace');
 var rename = require('gulp-rename');
@@ -89,6 +90,18 @@ gulp.task('coverage', ['karma-coverage'], function() {
 			fs.copySync(file.path, splitPath(file.path).path.join('\\'));
 			fs.removeSync(file.path);
 		}))
+});
+
+//Basic e2e testing
+gulp.task('e2e-phantom', function() {
+	return gulp.src([])
+		.pipe(nightwatch({
+			configFile: 'test/config/nightwatch-phantom.json'
+		}))
+});
+
+//Browser compatibility e2e testing
+gulp.task('e2e-browsers', function() {
 });
 
 
