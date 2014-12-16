@@ -3,7 +3,8 @@ module.exports = {
 	'Sample test': function(client) {
 		client
 			.url('https://google.com')
-			.verify.title('Google')
+			.assert.title('Google')
+			.pause(1000)
 			.end()
 	}
 };

@@ -102,6 +102,10 @@ gulp.task('e2e-phantom', function() {
 
 //Browser compatibility e2e testing
 gulp.task('e2e-browsers', function() {
+	return gulp.src([])
+		.pipe(nightwatch({
+			configFile: 'test/config/nightwatch-browsers.json'
+		}))
 });
 
 
