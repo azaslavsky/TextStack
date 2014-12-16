@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>TextStack Examples</title>
+	<style>
+		div{
+			margin-top: 100px;
+		}
+		div:first-child {
+			margin-top: 0;
+		}
+		textarea {
+			width: 80%;
+			height: 40%;
+			min-height: 240px;
+		}
+	</style>
+
+	<!-- TextStack -->
+	<script type="text/javascript" src="../src/textStack.js"></script>
+</head>
+
+<body>
+	<div>A simple text stack field, with the default settings.  Check out this page's source to view the code that generated it.</div>
+	<textarea id="simple"></textarea>
+	<script>
+		var simpleArea = document.getElementById('simple');
+		var simpleStack = new TextStack(simpleArea);
+	</script>
+
+	<div>By setting a low idleDelay (100) and a low maxInterval (300), we get very short undo blocks.  Try typing a bit, then press the undo key several times.  These undo snapshots are probably too small to be useful, but this is a good demonstration of the control TextStack gives developers over user input.</div>
+	<textarea id="quick"></textarea>
+	<script>
+		var quickArea = document.getElementById('quick');
+		var quickStack = new TextStack(quickArea, {
+			idleDelay: 100,
+			maxInterval: 300
+		});
+	</script>
+
+	<div>This textarea has a very long idleDelay (2000) and maxInterval (10000).  We basically never see undo snapshots - you'll either have to type forever, or wait a long time between typing spurts to get one.</div>
+	<textarea id="long"></textarea>
+	<script>
+		var longArea = document.getElementById('long');
+		var longStack = new TextStack(longArea, {
+			idleDelay: 2000,
+			maxInterval: 10000
+		});
+	</script>
+
+	<!--<div>You can rebind the redo and undo key combinations as you see fit.  Here, you can use Adobe style key combos for undo (Ctrl+Alt+Z) and redo (Ctrl+Shift+Z) operations.</div>
+	<textarea id="adobe"></textarea>
+	<script>
+		var adobeArea = document.getElementById('adobe');
+		var adobeStack = new TextStack(adobeArea, {
+			undoKeys: [17,18,90],
+			redoKeys: [16,17,90]
+		});
+	</script>-->
+</body>
+</html>

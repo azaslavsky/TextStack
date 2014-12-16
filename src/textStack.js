@@ -54,7 +54,7 @@
 		//this.opts.keyHoldDelay = this.opts.keyHoldDelay || 400; //TODO
 		//this.opts.keyHoldInterval = this.opts.keyHoldInterval || 100; //TODO - Probably use this code to throttle undo/redo events appropriately: http://remysharp.com/2010/07/21/throttling-function-calls
 		this.opts.omitWhitespace = this.opts.omitWhitespace || false;
-		this.opts.maxInterval = this.opts.maxInterval && this.opts.maxInterval > 1.2 * this.opts.idleDelay ? opts.maxInterval : 1.2 * this.opts.idleDelay < 4000 ? 4000 : 1.2 * this.opts.idleDelay; //The maxInterval must be at least 1.2x the idleDelay
+		this.opts.maxInterval = this.opts.maxInterval && this.opts.maxInterval > 1.2 * this.opts.idleDelay ? opts.maxInterval : 1.2 * this.opts.idleDelay < 1500 ? 1500 : 1.2 * this.opts.idleDelay; //The maxInterval must be at least 1.2x the idleDelay
 		this.opts.maxUndoStackSize = this.opts.maxUndoStackSize || 100;
 		this.opts.redoKeys = this.opts.redoKeys || [17, 89];
 		this.opts.undoKeys = this.opts.undoKeys || [17, 90];
