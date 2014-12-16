@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '../../',
 
 
     // frameworks to use
@@ -36,22 +36,16 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['mocha', 'html', 'coverage'],
+    reporters: ['mocha', 'coverage'],
 
 
     // optionally, configure the reporter
     coverageReporter: {
-      dir: 'test/results/coverage',
+      dir: 'test/results/coverage/',
       reporters: [ 
         { type : 'lcovonly', subdir : '.'},
         { type : 'html', subdir : '.'}
       ]
-    },
-
-
-    // jasmein html reports
-    htmlReporter: {
-      outputFile: 'test/results/compatibility.html',
     },
 
 

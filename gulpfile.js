@@ -38,67 +38,45 @@ var splitPath = function(path){
 
 
 
+//Generic unit testing options
+var unitOpts = {
+	configFile: __dirname+'/test/config/karma.conf.js',
+	reporters: ['mocha', 'html']
+};
+
+
+
 //Jasmine tests, for simple in browser verification
 gulp.task('jasmine', function() {
 	gulp.src(['./test/jasmine.html'])
 		.pipe(open('<%file.path%>'));
 });
 
-//Test for browser compatibility
-gulp.task('browsers', function(done) {
-	var opts = {
-		configFile: __dirname+'/karma.conf.js',
-		singleRun: true,
-		browsers: ['PhantomJS', 'Chrome', 'ChromeCanary', 'Firefox', 'FirefoxDeveloper', 'IE11', 'IE10', 'IE9'],
-		reporters: ['mocha', 'html'],
-		preprocessors: {}
+//Basic unit testing
+gulp.task('unit-phantom', function(done) {
+	unitOpts.browsers = ['PhantomJS'];
+	unitOpts.htmlReporter = {
+		outputFile: 'test/results/spec/phantom.html'
 	};
 
-	return karma.start(opts, done);
+	return karma.start(unitOpts, done);
 });
 
-//USED FOR OLD karma-html-reporter plugin; since switching to karma-html-file-reporter, this is no longer necessary
-/*gulp.task('compatibility', ['karma-compatibility'], function() {
-	console.log('./test/browser/'+ (typeof args.open === 'string' ? args.open+'*' : '*') +'/index.html');
+//Unit for browser compatibility
+gulp.task('unit-browsers', function(done) {
+	unitOpts.browsers = ['PhantomJS', 'Chrome', 'ChromeCanary', 'Firefox', 'FirefoxDeveloper', 'IE11', 'IE10', 'IE9'];
+	unitOpts.htmlReporter = {
+		outputFile: 'test/results/spec/compatibility.html'
+	};
 
-	//return gulp.src(['./test/browser/'+ (typeof args.open === 'string' ? args.open+'*' : '*') +'/index.html'])
-		.pipe(forEach(function(stream, file){
-			var output, justOS, justBrowser, segments, newName, pathing, dirContents;
-
-			//Get path segments
-			console.log(file.path);
-			output = splitPath(file.path);
-			output.path.pop();
-
-			//Create the appropriate names
-			justOS = output.dir.match(/ \(.*\)/i);
-			justBrowser = output.dir.replace(/ \(.*\)/i, '');
-			segments = justBrowser.split('.');
-			newName = (segments.length < 3 ? segments.join('.') : segments[0] +'.'+ segments[1]);// + ((justOS && justOS[0]) || '');
-			
-			//Move the files, and clear the old directories
-			console.log(newName);
-			if (newName && output.fileType){
-				pathing = output.path.join('\\');
-				console.log(pathing +'\\'+ newName + output.fileType);
-				fs.renameSync(file.path, pathing +'\\'+ newName + output.fileType);
-
-				dirCotnents = fs.readdirSync(pathing +'\\'+ output.dir);
-				if ( !dirContents || !dirContents.length ){
-					fs.rmdirSync(pathing +'\\'+ output.dir);
-				}
-			}
-		}))
-		.pipe(check(args.open, open('<%file.path%>')));
-});*/
+	return karma.start(unitOpts, done);
+});
 
 //Full Karma run-through for coverage
 gulp.task('karma-coverage', function(done) {
 	var opts = {
-		configFile: __dirname+'/karma.conf.js',
-		singleRun: true,
+		configFile: __dirname+'/test/config/karma.coverage.js',
 		browsers: args.browsers ? [args.browsers] : ['PhantomJS'],
-		reporters: ['mocha', 'coverage'],
 	};
 
 	return karma.start(opts, done);
@@ -106,7 +84,7 @@ gulp.task('karma-coverage', function(done) {
 
 //Test for basic completeness and coverage
 gulp.task('coverage', ['karma-coverage'], function() {
-	return gulp.src(['./test/results/Phantom*']) //'+ args.browser ? args.browser : 'Phantom' +'
+	return gulp.src(['./test/results/coverage/Phantom*']) //'+ args.browser ? args.browser : 'Phantom' +'
 		.pipe(forEach(function(stream, file){
 			fs.copySync(file.path, splitPath(file.path).path.join('\\'));
 			fs.removeSync(file.path);
