@@ -1,6 +1,6 @@
 {
   "name": "textstack",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A simple undo history script for DOM text fields",
   "main": "dist/textStack.js",
   "license": "MIT",

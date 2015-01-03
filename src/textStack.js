@@ -84,14 +84,23 @@
 
 
 	
-	//A list of the only two actions a user can undertake
-	//@private
+	/**
+	 * A list of the only two actions a user can undertake
+	 * @memberof Backbone.History
+	 * @private
+	 * @ignore
+	*/
 	TextStack.prototype.actions = ['redo', 'undo'];
 
 
 
-	///Create the event listeners for useful keypresses
-	//@private
+	/**
+	 * Create the event listeners for useful keypresses
+	 * @method
+	 * @memberof Backbone.History
+	 * @private
+	 * @ignore
+	*/
 	TextStack.prototype.on = function(){
 		//Make sure the bound functions are saved, so that we can remove the listeners cleanly without leaking memory
 		this.listeners = {
@@ -112,6 +121,8 @@
 		}
 	};
 
+
+
 	/**
 	 * Remove the event listeners, so that we can delete this bad boy without any memory leaks
 	 * @memberof TextStack
@@ -130,9 +141,14 @@
 
 
 
-	//A key has been depressed
-	//@param {Event} e Event that triggered this function
-	//@private
+	/**
+	 * A key has been depressed
+	 * @method
+	 * @param {Event} e Event that triggered this function
+	 * @memberof Backbone.History
+	 * @private
+	 * @ignore
+	*/
 	TextStack.prototype.down = function(e){
 		this.eventFired(e);
 
@@ -176,9 +192,14 @@
 
 
 
-	//A key has been released
-	//@param {Event} e Event that triggered this function
-	//@private
+	/**
+	 * A key has been released
+	 * @method
+	 * @param {Event} e Event that triggered this function
+	 * @memberof Backbone.History
+	 * @private
+	 * @ignore
+	*/
 	TextStack.prototype.up = function(e){
 		this.eventFired(e);
 
@@ -199,9 +220,14 @@
 
 
 
-	//The user has clicked on the element, but not necessarily changed it - compare selection ranges
-	//@param {Event} e Event that triggered this function
-	//@private
+	/**
+	 * The user has clicked on the element, but not necessarily changed it - compare selection ranges
+	 * @method
+	 * @param {Event} e Event that triggered this function
+	 * @memberof Backbone.History
+	 * @private
+	 * @ignore
+	*/
 	TextStack.prototype.mouse = function(e){
 		this.eventFired(e);
 
@@ -217,9 +243,14 @@
 
 
 
-	//Clear the "pressed" array tracking pressed keys
-	//@param {Event} e Event that triggered this function
-	//@private
+	/**
+	 * Clear the "pressed" array tracking pressed keys
+	 * @method
+	 * @param {Event} e Event that triggered this function
+	 * @memberof Backbone.History
+	 * @private
+	 * @ignore
+	*/
 	TextStack.prototype.clear = function(e){
 		this.eventFired(e);
 		this.pressed = [];
@@ -227,9 +258,14 @@
 
 
 
-	//Do some housekeeping any time a relevant event (keydown, keyup, change, or mouseup) is fired
-	//param {Event} e Event that triggered this function
-	//@private
+	/**
+	 * Do some housekeeping any time a relevant event (keydown, keyup, change, or mouseup) is fired
+	 * @method
+	 * @param {Event} e Event that triggered this function
+	 * @memberof Backbone.History
+	 * @private
+	 * @ignore
+	*/
 	TextStack.prototype.eventFired = function(e){
 		//Any user event after a right click must trigger a snapshot attempt
 		if (this.contextMenuActive) {
@@ -248,9 +284,14 @@
 
 
 
-	//Has the user not made any changes in at time greater than the idleDelay?  Attempt a snapshot
-	//param {number} timeStamp The time at which this idelCheck was registered; if the element value has not been altered since then, attempt to make a snapshot
-	//@private
+	/**
+	 * Has the user not made any changes in at time greater than the idleDelay?  Attempt a snapshot
+	 * @method
+	 * @param {number} timeStamp The time at which this idelCheck was registered; if the element value has not been altered since then, attempt to make a snapshot
+	 * @memberof Backbone.History
+	 * @private
+	 * @ignore
+	*/
 	TextStack.prototype.idleCheck = function(timeStamp){
 		if (timeStamp >= this.lastAltered) {
 			this.snapshot();
@@ -260,9 +301,14 @@
 
 
 
-	//Has the user not made a snapshot in a length of time greater than maxInterval?  Attempt a snapshot if they have not
-	//@ params {number} [snapIndex] A unique identifier that will be matched against the snapCounter to see if any new snapshots have been made in the interval
-	//@private
+	/**
+	 * Has the user not made a snapshot in a length of time greater than maxInterval?  Attempt a snapshot if they have not
+	 * @method
+	 * @param {number} [snapIndex] A unique identifier that will be matched against the snapCounter to see if any new snapshots have been made in the interval
+	 * @memberof Backbone.History
+	 * @private
+	 * @ignore
+	*/
 	TextStack.prototype.intervalCheck = function(snapIndex){
 		if (typeof snapIndex === 'number' && snapIndex <= this.snapCounter) {
 			if (this.snapshot()){
@@ -274,10 +320,15 @@
 
 
 
-	//Check to see if we are pressing the exact combination of keys to fire an action, no more or less
-	//@param {Event} e Event that triggered this function
-	//@return {boolean} Whether or not the currently depressed keys match the triggger for a listed action
-	//@private
+	/**
+	 * Check to see if we are pressing the exact combination of keys to fire an action, no more or less
+	 * @method
+	 * @param {Event} e Event that triggered this function
+	 * @return {boolean} Whether or not the currently depressed keys match the triggger for a listed action
+	 * @memberof Backbone.History
+	 * @private
+	 * @ignore
+	*/
 	TextStack.prototype.compareKeys = function(e){
 		var isAction = false;
 		this.actions.forEach(function(a){

@@ -119,45 +119,54 @@ gulp.task('coverage', ['karma-coverage'], function() {
 
 //Make the markdown version of the API
 gulp.task('api', function() {
-	gulp.src(['./src/textStack.js'])
+	return gulp.src(['./src/textStack.js'])
 		.pipe(doc())
 		.pipe(rename(function(path){
 			path.basename = "API";
 			path.extname = ".md";
 		}))
-		.pipe(replace('##', '###'))
-		.pipe(replace('#class: TextStack', '## API'))
+		//.pipe(replace('##', '\n* * *\n###')) //Using v0.6.x of jsdoc-to-markdown plugin, this is no longer necessary
+		.pipe(replace('###', '\n* * *\n####'))
+		.pipe(replace('#class: TextStack', '# API'))
+		//.pipe(replace(/^[\s\S]*?(?:###class: )/, '##API\n###')) //https://regex101.com/r/hO4fW4/2
 		.pipe(gulp.dest('./docs'))
 });
 
 //Make the readme file
 gulp.task('docs', ['api'], function() {
-	gulp.src(['./docs/NOTES.md', './docs/API.md', 'LICENSE.md'])
+	return gulp.src(['./docs/NOTES.md', './docs/API.md', 'LICENSE.md'])
 		.pipe(concat('README.md'))
 		.pipe(gulp.dest('./'))
 });
 
-//Bump the version
-gulp.task('bump', ['docs'], function() {
-	gulp.src(['./package.json', './bower.json'])
-		.pipe(bump({type: args.vers || 'patch'}))
-		.pipe(gulp.dest('./'));
-});
-
 //Copy the original file to the dist folder
-gulp.task('copy', ['bump'], function() {
-	gulp.src(['./src/textStack.js'])
+gulp.task('copy', ['docs'], function() {
+	return gulp.src(['./src/textStack.js'])
+		.pipe(uglify({
+			output: {
+				beautify: true
+			},
+			compress: false,
+			mangle: false
+		}))
 		.pipe(gulp.dest('./dist'))
 });
 
 //Build this sucker!
 gulp.task('build', ['copy'], function() {
-	gulp.src(['./src/textStack.js'])
+	return gulp.src(['./src/**/*.js'])
 		.pipe(uglify())
 		.pipe(rename(function(path){
 			path.basename += '.min';
 		}))
 		.pipe(gulp.dest('./dist'))
+});
+
+//Bump the version
+gulp.task('bump', ['build'], function() {
+	return gulp.src(['./package.json', './bower.json'])
+		.pipe(bump({type: args.vers || 'patch'}))
+		.pipe(gulp.dest('./'));
 });
 
 
